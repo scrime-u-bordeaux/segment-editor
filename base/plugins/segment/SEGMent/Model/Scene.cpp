@@ -255,8 +255,8 @@ void DataStreamWriter::write(SEGMent::SceneModel& v)
 {
   // Deserialize objects, gifs, etc
   SEGMent::forEachCategoryInScene(v,
-      [&] <typename T> (T& map) {
-        using entity_type = typename T::value_type;
+      [&] (auto& map) {
+        using entity_type = typename std::remove_reference_t<decltype(map)>::value_type;
 
         int32_t sz;
         m_stream >> sz;

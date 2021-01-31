@@ -24,8 +24,9 @@ public:
   {
       dispatchSceneChildren(
                   scene,
-                  [&] <typename Obj_T> (const Obj_T& obj) {
+                  [&]  (const auto& obj) {
       {
+        using Obj_T = std::remove_reference_t<std::remove_const_t<decltype(obj)>>;
         if constexpr (std::is_same_v<T, Obj_T>)
         {
           if (&obj == &self)
