@@ -2,9 +2,9 @@
 source /opt/qt*/bin/qt*-env.sh
 
 set -eux
-CC=gcc-9 CXX=g++-9 cmake -DSEGMENT_RELEASE=1 -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX=appdir/usr -DCMAKE_SKIP_RPATH=ON
+CC=gcc-9 CXX=g++-9 cmake -DSEGMENT_RELEASE=1 -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX=appdir/usr -DCMAKE_SKIP_RPATH=ON -DCMAKE_UNITY_BUILD=1
 
-cmake --build . --target all_unity -- -j$(nproc)
+cmake --build . -j$(nproc)
 cmake --build . --target docs
 cmake --build . --target install/strip/fast
 
