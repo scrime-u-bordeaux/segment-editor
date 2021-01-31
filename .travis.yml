@@ -2,11 +2,12 @@ language: cpp
 compiler: gcc
 sudo: required
 dist: xenial
+osx_image: xcode12.2  
 
 os: 
   - osx
   - linux
-  
+
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; 
     then tools/travis/before_install_linux.sh;
