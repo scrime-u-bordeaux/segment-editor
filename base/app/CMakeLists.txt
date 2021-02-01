@@ -34,6 +34,12 @@ endif()
 if(APPLE)
     target_sources(${APPNAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/mac_main.m")
 
+    set_source_files_properties(
+      "${CMAKE_CURRENT_SOURCE_DIR}/mac_main.m"
+      PROPERTIES
+        SKIP_UNITY_BUILD_INCLUSION 1
+    )
+
     find_library(CFLIB CoreFoundation)
     find_library(FLIB Foundation)
     target_link_libraries(${APPNAME} PRIVATE ${CFLIB} ${FLIB})
