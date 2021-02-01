@@ -1,37 +1,37 @@
 language: cpp
 compiler: gcc
 sudo: required
-dist: xenial
-osx_image: xcode12.2  
+dist: focal
+osx_image: xcode12.2
 
-os: 
+os:
   - osx
   - linux
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ];
     then tools/travis/before_install_linux.sh;
     else tools/travis/before_install_macos.sh;
     fi
 
 install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ];
     then tools/travis/install_linux.sh;
     else tools/travis/install_macos.sh;
     fi
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ];
     then tools/travis/script_linux.sh;
     else tools/travis/script_macos.sh;
     fi
 
 after_success:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ];
     then tools/travis/after_success_linux.sh;
     else tools/travis/after_success_macos.sh;
     fi
-  
+
 deploy:
   - provider: releases
     api_key:
